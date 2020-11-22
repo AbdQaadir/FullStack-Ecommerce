@@ -5,11 +5,11 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 // Pages
 import Homepage from './pages/Homepage/Homepage'
-import './App.css';
+import ProductPage from './pages/ProductPage/ProductPage';
 
+import './App.css';
 const App:React.FC = () => {
   const [products, setProducts] = useState<object[]>([]);
-
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
     .then(res=>res.json())
@@ -23,7 +23,8 @@ const App:React.FC = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/" render={(props) => <Homepage {...props} products={products}/>}/>
+        <Route exact path="/" render={(props) => <Homepage {...props} products={products}/>}/>
+        <Route path="/product/:category/:id" render={(props) => <ProductPage {...props} products={products}/>}/>
       </Switch>
     </Router>
   );

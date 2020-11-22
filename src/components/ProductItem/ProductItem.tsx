@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import styled from 'styled-components';
 
 const ProductDiv = styled.div` 
@@ -35,15 +37,18 @@ const ProductDiv = styled.div`
             width: 100px;
             margin: 7px auto;
         }
-        .btn {
+        a {
+            display: block;
+            text-decoration: none;
             color: var(--dark);
             border: none;
             padding: 8px 12px;
             cursor: pointer;
             font-size: 15px;
             font-weight: 600;
-            margin-top: 14px;
+            margin-top: 24px;
             border-radius: 8px;
+            background: var(--light);
         }
     }
     &:hover{
@@ -83,7 +88,7 @@ const ProductItem:React.FC<Props> = ({ price, title, id, image, category}) => {
             <div className="overlay">
                 <h3 className="title">{title.substring(0, 50)}...</h3>
                 <h4 className="price">$ {price}</h4>
-                <button className="btn">View Product</button>
+                <Link to={`/product/${category}/${id}`} className="btn">View Product</Link>
             </div>
             <div className="img-wrapper">
                 <img src={image} alt="Showing product item"/>
