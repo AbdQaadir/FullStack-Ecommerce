@@ -38,8 +38,11 @@ const FeaturedProducts:React.FC<Props> = ({products, title}) =>  {
         <Container>
             <HeaderTitle title={title}/>
             <FeaturedDiv>
-                {products.filter((product) => product.category === title).map((item: Product, idx:number) => <ProductItem key={idx}  {...item} /> )}
+                {products.filter((product) => product.category === title).map((item: Product, idx:number) => idx < 4 && <ProductItem key={idx}  {...item} />
+                )}
             </FeaturedDiv>
+
+            
         </Container>
     )
 }
