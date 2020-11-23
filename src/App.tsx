@@ -7,6 +7,9 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Homepage from './pages/Homepage/Homepage'
 import ProductPage from './pages/ProductPage/ProductPage';
 
+// Components
+import ScrollToTop from './ScrollToTop';
+
 import './App.css';
 const App:React.FC = () => {
   const [products, setProducts] = useState<object[]>([]);
@@ -22,9 +25,10 @@ const App:React.FC = () => {
   }, [])
   return (
     <Router>
+      <ScrollToTop />
       <Switch>
         <Route exact path="/" render={(props) => <Homepage {...props} products={products}/>}/>
-        <Route path="/product/:category/:id" render={(props) => <ProductPage {...props} products={products}/>}/>
+        <Route path="/store/:category/:id" component={ProductPage}/>
       </Switch>
     </Router>
   );
