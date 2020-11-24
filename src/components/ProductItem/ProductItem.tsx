@@ -17,6 +17,8 @@ const ProductDiv = styled.div`
         margin: 10px 0;
         font-size: 14px;
         font-weight: 300;
+        min-height: 40px;
+        padding: 0 10px;
     }
     .price {
         color: red;
@@ -27,6 +29,9 @@ const ProductDiv = styled.div`
         margin: 0;
     }
     a {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
         display: block;
         text-decoration: none;
         color: var(--dark);
@@ -38,6 +43,10 @@ const ProductDiv = styled.div`
         margin-top: 2px;
         border-radius: 8px;
         background: var(--light);
+
+        &:hover{
+            color: var(--darkred);
+        }
     }
     .img-wrapper{
         display: flex;

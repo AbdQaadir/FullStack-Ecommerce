@@ -101,7 +101,7 @@ const ProductPage:React.FC = (props: any) => {
                 <BackButton onClick={() => history.goBack()}> &lt; Back</BackButton>
                 <div className="row">
                     <div className="col">
-                        <img src={product.image} alt="Product Image"/>
+                        <img src={product.image} alt="Product Item"/>
                     </div>
                     <div className="col">
                         <h2>{product.title}</h2>
