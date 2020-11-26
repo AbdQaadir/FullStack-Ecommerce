@@ -1,5 +1,6 @@
 import React from 'react';
-
+import {useSelector, useDispatch}  from 'react-redux';
+import { RootState } from '../../redux/store'
 // Components
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 import Header from '../../components/Header/Header';
@@ -10,14 +11,19 @@ interface Props {
 }
 
 const categories = ["men clothing", "jewelery", "electronics", "women clothing", ]
-const Homepage:React.FC<Props> = ({products}) => {
+const Homepage:React.FC<Props> = () => {
+    // const dispatch = useDispatch();
+    const products = useSelector((state: RootState) => state.products);
+    
     return (
        <>
        <Header />
        <Main />
-       {categories.map((item) => <FeaturedProducts products={products} title={item}/>)}
+       
+       {categories.map((item, idx) => <FeaturedProducts key={idx} products={products} title={item}/>)}
        </>
     )
 }
 
-export default Homepage
+
+export default Homepage;
