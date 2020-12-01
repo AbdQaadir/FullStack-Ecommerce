@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const ProductDiv = styled.div` 
     width: 230px;
-    height: 280px;
+    height: 340px;    
     box-shadow: 1px 4px 10px 1px rgba(0,0,0,0.085);
     border-radius: 10px;
     overflow: hidden;
@@ -15,14 +15,14 @@ const ProductDiv = styled.div`
     .title{
         color: var(--dark);
         margin: 10px 0;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 300;
         min-height: 40px;
         padding: 0 10px;
     }
     .price {
         color: red;
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 600;
         padding: 5px;
         width: 100px;
@@ -43,7 +43,6 @@ const ProductDiv = styled.div`
         margin-top: 2px;
         border-radius: 8px;
         background: var(--light);
-
         &:hover{
             color: var(--darkred);
         }
@@ -53,7 +52,9 @@ const ProductDiv = styled.div`
         justify-content: space-between;
         align-items: center; 
         width: 100%;
-        height: 50%;
+        height: 60%;
+        padding: 20px;
+        text-align: center;
         img{
             width: 90%;
             height: 100%;           
@@ -80,7 +81,7 @@ const ProductItem:React.FC<Props> = ({ price, title, id, image, category}) => {
             </div>
             <h3 className="title">{title.length > 50 ? title.substring(0, 50) + "..." : title}</h3>
             <h4 className="price">$ {price}</h4>
-            <Link to={{pathname:`/store/${category.split(" ")[0]}/${id}`, state: {product: {price, title, id, image, category}}}} className="btn">View Product</Link>
+            <Link to={{pathname:`/${category.split(" ")[0]}/${title}`, state: {id}}} className="btn">View Product</Link>
         </ProductDiv>
     )
 }

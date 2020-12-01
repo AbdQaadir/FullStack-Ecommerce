@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import styled from 'styled-components';
+
+// import { RootState } from '../../redux/store';
+import { addItemToCart } from '../../features/cart/cartSlice'
+
 
 import Header from '../../components/Header/Header'
 import {Container} from '../../styles/GlobalStyles';
@@ -89,11 +94,19 @@ const MainContainer = styled(Container)`
 
 
 const ProductPage:React.FC = (props: any) => {
-    const product = props.location.state.product;
+    const dispatch = useDispatch();
+    const {products, cart} = useSelector((state: any) => state);
+    const id = props.location.state.id;
+    const product = products.find((item:any) => +item.id === +id);
     const history = props.history;
+    const checkIfAddedToCart = cart.find((item:any) => +item.id === +id);
+    console.log(cart, checkIfAddedToCart);
 
     const [quantity, setQuantity] = useState<number>(1);
-    console.log(product)
+
+    const AddItemToCart = () => {
+        dispatch(addItemToCart({product, id, quantity}));
+    }
     return (
         <>
             <Header />
@@ -101,11 +114,11 @@ const ProductPage:React.FC = (props: any) => {
                 <BackButton onClick={() => history.goBack()}> &lt; Back</BackButton>
                 <div className="row">
                     <div className="col">
-                        <img src={product.image} alt="Product Item"/>
+                        <img src={product?.image} alt="Product Item"/>
                     </div>
                     <div className="col">
-                        <h2>{product.title}</h2>
-                        <h2 className="price">$ {product.price}</h2>
+                        <h2>{product?.title}</h2>
+                        <h2 className="price">$ {product?.price}</h2>
 
                         <h4>Quantity</h4>
                         <div className="quantity-wrapper">
@@ -114,7 +127,9 @@ const ProductPage:React.FC = (props: any) => {
                             <button onClick={() => setQuantity(quantity + 1)}>+</button>
                         </div>
                         <div className="cta">
-                            <button>Add to Cart</button>
+                            <button onClick={() => AddItemToCart()}>
+                                {checkIfAddedToCart ? "Remove from Cart" : "Add to Cart"}
+                            </button>
                             <button>Proceed to Checkout</button>
                         </div>
                     </div>

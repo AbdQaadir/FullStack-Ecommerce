@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 const MainDiv = styled.div`
-    min-height: 60vh;
+    min-height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;

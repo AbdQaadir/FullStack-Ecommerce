@@ -1,6 +1,10 @@
 import React from 'react';
-import {useSelector, useDispatch}  from 'react-redux';
-import { RootState } from '../../redux/store'
+
+import {useSelector}  from 'react-redux';
+
+
+
+
 // Components
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 import Header from '../../components/Header/Header';
@@ -10,10 +14,11 @@ interface Props {
     products: Array<any>
 }
 
-const categories = ["men clothing", "jewelery", "electronics", "women clothing", ]
+const categories = ["men clothing", "jewelery", "electronics", "women clothing", ];
+
 const Homepage:React.FC<Props> = () => {
-    // const dispatch = useDispatch();
-    const products = useSelector((state: RootState) => state.products);
+
+    const products = useSelector((state: any) => state.products);
     
     return (
        <>
