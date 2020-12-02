@@ -1,8 +1,12 @@
 import styled from 'styled-components'
-
+import {Link} from 'react-router-dom';
 
 export const HeaderDiv = styled.header`
     display: flex;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 999999999999999999999999999999;
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
@@ -33,5 +37,22 @@ export const HeaderDiv = styled.header`
         background: var(--main-green);
         color: var(--light);
         font-weight: 600;
+    }
+`
+
+
+export const CartButton = styled(Link)`
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    position: relative;
+    padding: 20px;
+
+    span {
+        font-size: 13px;
+        position: absolute;
+        top: 9px;
+        font-weight: 700;
     }
 `

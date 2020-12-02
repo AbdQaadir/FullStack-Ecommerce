@@ -7,12 +7,14 @@ import { addProducts } from './features/products/productsSlice'
 // Pages
 import Homepage from './pages/Homepage/Homepage'
 import ProductPage from './pages/ProductPage/ProductPage';
-import Login from './pages/Login/Login'
+import Login from './pages/Login/Login';
+import CartPage from './pages/CartPage/CartPage';
 
 // Components
 import ScrollToTop from './ScrollToTop';
 
 import './App.css';
+
 const App: React.FC = () => {
   const dispatch = useDispatch();
 
@@ -34,6 +36,7 @@ const App: React.FC = () => {
         <Route exact path="/" component={Homepage} />
         <Route path="/:category/:id" component={ProductPage} />
         <Route path="/login" component={Login} />
+        <Route path="/cart" component={CartPage} />
       </Switch>
     </Router>
   );
