@@ -9,7 +9,7 @@ function Header() {
     const length = useSelector((state:any) => state.cart.length);
     return (
         <HeaderDiv>
-            <Link to="'/">Qoat</Link>
+            <Link to="/">Qoat</Link>
             <nav>
                 <ul>
                     <li><Link to="/">Shop</Link></li>
